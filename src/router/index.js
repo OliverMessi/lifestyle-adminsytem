@@ -2,8 +2,8 @@ import Vue from 'vue'
 import  VueRouter from 'vue-router'
 
 const Home = () => import('../views/home/Home');
-const NotFound = ()=>import('../views/404');
-const Login = ()=>import('../views/Login');
+const NotFound = ()=>import('../views/error/Error');
+const Login = ()=>import('../views/login/Login');
 
 //1.安装插件
 Vue.use(VueRouter)
