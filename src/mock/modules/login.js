@@ -3,7 +3,7 @@ export function login () {
   return {
     // isOpen: false,
     url: 'http://localhost:8002/api/login',
-    type: 'get',
+    type: 'post',
     data: {
       'msg': 'success',
       'code': 0,
