@@ -19,6 +19,7 @@ module.exports = {
       alias:{
         'mock':'@/mock',
         'assets':'@/assets',
+        'router':'@/router',
         'common':'@/common',
         'components':'@/components',
         'network':'@/network',

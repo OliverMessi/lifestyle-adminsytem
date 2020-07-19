@@ -7,13 +7,13 @@
 </template>
 
 <script>
-  import axios from 'axios'
+ import {getMenu,getUser} from 'network/home'
 
   export default {
     name: "Home",
     methods:{
       getUser(){
-        axios.get('http://localhost:8002/user')
+        getUser()
             .then(function (res) {
               alert(JSON.stringify(res.data));
             }).catch(function (res) {
@@ -21,7 +21,7 @@
         })
       },
       getMenu(){
-        axios.get('http://localhost:8002/menu')
+        getMenu()
             .then(function (res) {
               alert(JSON.stringify(res.data));
             }).catch(function (res) {
