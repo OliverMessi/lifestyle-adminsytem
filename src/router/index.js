@@ -2,12 +2,12 @@ import Vue from 'vue'
 import  VueRouter from 'vue-router'
 
 const Home = () => import('../views/home/Home');
-const User = () => import('../views/home/childCnps/User');
-const Menu = () => import('../views/home/childCnps/Menu');
-const Introduce = () => import('../views/home/childCnps/Introduce');
-const Dept = () => import('../views/home/childCnps/Dept');
-const Role = () => import('../views/home/childCnps/Role');
-const Log = () => import('../views/home/childCnps/Log');
+const User = () => import('../views/sysMng/User');
+const Menu = () => import('../views/sysMng/Menu');
+const Introduce = () => import('../views/Introduce');
+const Dept = () => import('../views/sysMng/Dept');
+const Role = () => import('../views/sysMng/Role');
+const Log = () => import('../views/sysMng/Log');
 const NotFound = ()=>import('../views/error/Error');
 const Login = ()=>import('../views/login/Login');
 
@@ -22,7 +22,6 @@ const routes = [
     component: Home,
     children: [
       { path: '', component: Introduce, name: '系统介绍' },
-      { path: '/main', component: Introduce, name: '系统介绍' },
       { path: '/user', component: User, name: '用户管理' },
       { path: '/menu', component: Menu, name: '菜单管理' },
       { path: '/dept', component: Dept, name: '机构管理' },
