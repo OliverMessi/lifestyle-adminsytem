@@ -6,10 +6,12 @@ import router from './router'
 import mock from 'mock/index'
 import i18n from './i18n'
 import './theme/theme-67da9a/index.css'
+import store from './store'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 new Vue({
   render: h => h(App),
   router,
-  i18n
+  i18n,
+  store
 }).$mount('#app')
