@@ -15,7 +15,7 @@
           <el-menu :default-active="activeIndex" class="el-menu-demo" background-color="#4b5f6e" text-color="#fff"
                    active-text-color="#ffd04b" mode="horizontal" @select="handleSelectHearNavBar">
             <el-menu-item index="1">{{$t("common.home")}}</el-menu-item>
-            <el-menu-item index="3">{{$t("common.msgCenter")}}</el-menu-item>
+            <el-menu-item index="2">{{$t("common.msgCenter")}}</el-menu-item>
           </el-menu>
         </div>
       </el-col>

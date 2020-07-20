@@ -17,6 +17,7 @@ module.exports = {
   configureWebpack:{
     resolve:{
       alias:{
+        'theme':'@/theme',
         'mock':'@/mock',
         'assets':'@/assets',
         'router':'@/router',
