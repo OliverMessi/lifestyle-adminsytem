@@ -1,11 +1,11 @@
 <template>
     <div class="menu-bar-container">
         <!-- logo -->
-        <div class="logo" :class="$store.state.collapse?'menu-bar-collapse-width':'menu-bar-width'">
-            <img :src="this.logo" /> <div>{{$store.state.collapse?'':sysName}}</div>
+        <div class="logo" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'">
+            <img :src="this.logo" /> <div>{{collapse?'':appName}}</div>
         </div>
         <!-- 导航菜单 -->
-        <el-menu default-active="1-1" :class="$store.state.collapse?'menu-bar-collapse-width':'menu-bar-width'" @open="handleopen" @close="handleclose" @select="handleselect" :collapse="$store.state.collapse">
+        <el-menu default-active="1-1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'" @open="handleopen" @close="handleclose" @select="handleselect" :collapse="collapse">
             <el-submenu index="1">
                 <template slot="title">
                     <i class="el-icon-location"></i>
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: "MenuBar",
         data() {
@@ -57,6 +58,12 @@
         mounted() {
             this.sysName = "I Enjoy Living";
             this.logo = require("assets/logo.png");
+        },
+        computed:{
+            ...mapState({
+                appName:state=>state.app.appName,
+                collapse:state=>state.app.collapse,
+            })
         }
     }
 </script>

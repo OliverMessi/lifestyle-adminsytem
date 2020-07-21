@@ -1,7 +1,6 @@
 // 获取用户信息
 export function getUser () {
   return {
-    // isOpen: false,
     url: 'http://localhost:8002/api/home/user',
     type: 'get',
     data: {
@@ -17,11 +16,9 @@ export function getUser () {
     }
   }
 }
-
 // 获取菜单信息
 export function getMenu () {
   return {
-    // isOpen: false,
     url: 'http://localhost:8002/api/home/menu',
     type: 'get',
     data: {

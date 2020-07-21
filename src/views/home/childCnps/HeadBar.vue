@@ -1,11 +1,11 @@
 <template>
-    <div class="head-container" :class="$store.state.collapse?'menu-bar-collapse-width':'menu-bar-width'">
+    <div class="head-container" :class="$store.state.app.collapse?'menu-bar-collapse-width':'menu-bar-width'">
         <!-- 导航菜单隐藏显示切换 -->
-     <span class="collapse-switcher" @click.prevent="collapse">
-        <i class="el-icon-menu"></i>
-    </span>
+        <span class="hamburger-container">
+            <Hamburger :toggleClick="collapse" :isActive="$store.state.app.collapse"></Hamburger>
+        </span>
         <!-- 导航菜单 -->
-    <span class="nav-bar">
+        <span class="nav-bar">
       <el-menu :default-active="activeIndex" class="el-menu-demo" text-color="#fff"
                active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
         <el-menu-item index="1" @click="$router.push('/')">{{$t("common.home")}}</el-menu-item>
@@ -34,12 +34,13 @@
 <script>
     import ThemePicker from 'components/themePicker/ThemePicker';
     import LangSelector from 'components/langSelector/LangSelector';
-
+    import Hamburger from 'components/hamburger/Hamburger'
     export default {
         name: "HeadBar",
         components: {
             ThemePicker,
-            LangSelector
+            LangSelector,
+            Hamburger
         },
         data() {
             return {
@@ -55,7 +56,7 @@
             },
             //折叠导航栏
             collapse: function () {
-               this.$store.commit('collapse')
+                this.$store.commit('collapse')
             },
             //退出登录
             logout: function () {
@@ -90,17 +91,16 @@
         right: 0px;
         height: 60px;
         line-height: 60px;
-        .collapse-switcher {
+        .hamburger-container {
             width: 40px;
             float: left;
-            cursor: pointer;
-            border-color: rgba(111, 123, 131, 0.8);
+            border-color: rgba(80, 124, 133, 0.747);
             border-left-width: 1px;
             border-left-style: solid;
             border-right-width: 1px;
             border-right-style: solid;
             color: white;
-            background: #504e6180;
+            background: #545c64;
         }
         .nav-bar {
             margin-left: auto;
@@ -135,9 +135,11 @@
             }
         }
     }
+
     .menu-bar-width {
         left: 200px;
     }
+
     .menu-bar-collapse-width {
         left: 65px;
     }

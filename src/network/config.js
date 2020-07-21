@@ -5,7 +5,7 @@ export default {
   // 请求头信息
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
-    "Access-Control-Allow-Origin":"*",
+    "Access-Control-Allow-Origin":"*",//跨域设置
   },
   // 参数
   data: {},
