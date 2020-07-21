@@ -1,12 +1,12 @@
 <template>
-    <div class="head-container" :class="$store.state.app.collapse?'menu-bar-collapse-width':'menu-bar-width'">
-        <!-- 导航菜单隐藏显示切换 -->
-        <span class="hamburger-container">
-            <Hamburger :toggleClick="collapse" :isActive="$store.state.app.collapse"></Hamburger>
+    <div class="head-container" :style="{'background':themeColor}"  :class="collapse?'menu-bar-collapse-width':'menu-bar-width'">
+        <!-- 导航收缩 -->
+        <span class="hamburger-container" :style="{'background':themeColor}">
+            <Hamburger :onClick="onCollapse" :isActive="collapse"></Hamburger>
         </span>
         <!-- 导航菜单 -->
         <span class="nav-bar">
-      <el-menu :default-active="activeIndex" class="el-menu-demo" text-color="#fff"
+      <el-menu :default-active="activeIndex" class="el-menu-demo" :style="{'background-color':themeColor}" text-color="#fff"
                active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
         <el-menu-item index="1" @click="$router.push('/')">{{$t("common.home")}}</el-menu-item>
         <el-menu-item index="2">{{$t("common.doc")}}</el-menu-item>
@@ -15,7 +15,7 @@
     </span>
         <span class="tool-bar">
       <!-- 主题切换 -->
-      <ThemePicker class="theme-picker"></ThemePicker>
+      <ThemePicker class="theme-picker" @onThemeChange="onThemeChange"></ThemePicker>
             <!-- 语言切换 -->
       <LangSelector class="lang-selector"></LangSelector>
             <!-- 用户信息 -->
@@ -35,6 +35,7 @@
     import ThemePicker from 'components/themePicker/ThemePicker';
     import LangSelector from 'components/langSelector/LangSelector';
     import Hamburger from 'components/hamburger/Hamburger'
+    import { mapState } from 'vuex'
     export default {
         name: "HeadBar",
         components: {
@@ -55,8 +56,12 @@
                 console.log(key, keyPath)
             },
             //折叠导航栏
-            collapse: function () {
-                this.$store.commit('collapse')
+            onCollapse: function () {
+                this.$store.commit('onCollapse')
+            },
+            // 切换主题
+            onThemeChange: function(themeColor, oldThemeColor) {
+                this.$store.dispatch('onThemeChange', {themeColor, oldThemeColor});
             },
             //退出登录
             logout: function () {
@@ -79,6 +84,12 @@
                 this.userName = user;
                 this.userAvatar = require("assets/user.jpg");
             }
+        },
+        computed:{
+            ...mapState({
+                themeColor: state=>state.app.themeColor,
+                collapse: state=>state.app.collapse
+            })
         }
     }
 </script>
