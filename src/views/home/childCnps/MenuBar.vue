@@ -5,44 +5,27 @@
             <img :src="this.logo" /> <div>{{collapse?'':appName}}</div>
         </div>
         <!-- 导航菜单 -->
-        <el-menu default-active="1-1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'" @open="handleopen" @close="handleclose" @select="handleselect" :collapse="collapse">
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">{{$t("sys.sysMng")}}</span>
-                </template>
-                <el-menu-item index="1-1" @click="$router.push('user')">{{$t("sys.userMng")}}</el-menu-item>
-                <el-menu-item index="1-2" @click="$router.push('dept')">{{$t("sys.deptMng")}}</el-menu-item>
-                <el-menu-item index="1-3" @click="$router.push('role')">{{$t("sys.roleMng")}}</el-menu-item>
-                <el-menu-item index="1-4" @click="$router.push('menu')">{{$t("sys.menuMng")}}</el-menu-item>
-                <el-menu-item index="1-5" @click="$router.push('log')">{{$t("sys.logMng")}}</el-menu-item>
-            </el-submenu>
-            <el-submenu index="2">
-                <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">{{$t("sys.sysMonitor")}}</span>
-                </template>
-                <el-menu-item index="2-1" >服务监控</el-menu-item>
-                <el-menu-item index="2-2" >任务监控</el-menu-item>
-            </el-submenu>
-            <el-menu-item index="3">
-                <i class="el-icon-setting"></i>
-                <span slot="title">数据中心</span>
-            </el-menu-item>
+        <el-menu default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'" @open="handleopen" @close="handleclose" @select="handleselect" :collapse="collapse">
+           <!--导航菜单树组件，动态加载菜单-->
+            <menu-tree v-for="item in menuTree" :key="item.menuId" :menu="item"></menu-tree>
         </el-menu>
     </div>
 </template>
 
 <script>
     import { mapState } from 'vuex'
+    import MenuTree from 'components/menuTree/MenuTree'
+
     export default {
         name: "MenuBar",
         data() {
             return {
                 isCollapse: false,
-                sysName: "",
                 logo: "",
             };
+        },
+        components:{
+            MenuTree
         },
         methods: {
             handleopen() {
@@ -53,10 +36,9 @@
             },
             handleselect(a, b) {
                 console.log('handleselect');
-            }
+            },
         },
         mounted() {
-            this.sysName = "I Enjoy Living";
             this.logo = require("assets/logo.png");
         },
         computed:{
@@ -64,6 +46,7 @@
                 appName:state=>state.app.appName,
                 collapse:state=>state.app.collapse,
                 themeColor: state=>state.app.themeColor,
+                menuTree: state=>state.menu.menuTree,
             })
         }
     }

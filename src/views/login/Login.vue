@@ -17,7 +17,7 @@
 
 <script>
   import Cookies from "js-cookie";
-  import {login} from "network/login";
+  import {login} from "network/modules/login";
   export default {
     name: "Login",
     data() {
