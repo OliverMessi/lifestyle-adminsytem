@@ -7,6 +7,8 @@ import mock from 'mock/index'
 import i18n from './i18n'
 import './theme/theme-67da9a/index.css'
 import store from './store'
+import 'font-awesome/css/font-awesome.min.css'
+import 'assets/iconfont/iconfont.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 new Vue({
