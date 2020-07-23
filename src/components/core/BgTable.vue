@@ -3,7 +3,7 @@
         <!--表格栏-->
         <el-table :data="data.content" stripe highlight-current-row @selection-change="selectionChange"
                   :v-loading="loading" :max-height="maxHeight" :size="size" :align="align" style="width:100%;" >
-            <el-table-column type="selection" width="40"></el-table-column>
+            <el-table-column type="selection" width="60"></el-table-column>
             <el-table-column v-for="column in columns"
                              :prop="column.prop" :label="column.label" :width="column.width" :min-width="column.minWidth"
                              :sortable="column.sortable" :fixed="column.fixed" :key="column.prop" :type="column.type">

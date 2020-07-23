@@ -7,7 +7,7 @@
         <!-- 导航菜单 -->
         <el-menu default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'" @open="handleopen" @close="handleclose" @select="handleselect" :collapse="collapse">
            <!--导航菜单树组件，动态加载菜单-->
-            <menu-tree v-for="item in menuTree" :key="item.id" :menu="item"></menu-tree>
+            <menu-tree v-for="item in navTree" :key="item.id" :menu="item"></menu-tree>
         </el-menu>
     </div>
 </template>
@@ -46,7 +46,7 @@
                 appName:state=>state.app.appName,
                 collapse:state=>state.app.collapse,
                 themeColor: state=>state.app.themeColor,
-                menuTree: state=>state.menu.menuTree,
+                navTree: state=>state.menu.navTree,
             })
         }
     }

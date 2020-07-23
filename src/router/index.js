@@ -2,6 +2,7 @@ import Vue from 'vue'
 import  VueRouter from 'vue-router'
 
 import {findNavTree} from 'network/modules/menuBar'
+import {findPermissions} from 'network/modules/user'
 import { isURL } from 'utils/validate'
 import store from 'store'
 const Home = () => import('../views/home/Home');
@@ -78,8 +79,14 @@ function addDynamicMenuAndRoutes(userName) {
             // 保存加载状态
             store.commit('menuRouteLoaded', true);
             // 保存菜单树
-            store.commit('setMenuTree', res.data)
+            store.commit('setNavTree', res.data)
         })
+    //     .then(res => {
+    //      findPermissions({'name':userName}).then(res => {
+    //         // 保存用户权限标识集合
+    //         store.commit('setPerms', res.data)
+    //     })
+    // })
         .catch(function(res) {
             alert(res);
         });

@@ -21,6 +21,7 @@ module.exports = {
     resolve:{
       alias:{
         'utils':'@/utils',
+        'permission':'@/permission',
         'store':'@/store',
         'theme':'@/theme',
         'mock':'@/mock',

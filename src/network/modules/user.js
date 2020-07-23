@@ -30,7 +30,7 @@ export const findPage= (data)=>{
 }
 // 查找用户的菜单权限标识集合
 export const findPermissions = (params) => {
-    return axios({
+    return request({
         url: '/user/findPermissions',
         method: 'get',
         params
