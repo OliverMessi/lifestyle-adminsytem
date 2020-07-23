@@ -9,8 +9,10 @@ import './theme/theme-67da9a/index.css'
 import store from './store'
 import 'font-awesome/css/font-awesome.min.css'
 import 'assets/iconfont/iconfont.css'
+import SlideVerify from 'vue-monoplasty-slide-verify';
 Vue.config.productionTip = false
 Vue.use(ElementUI);
+Vue.use(SlideVerify);
 new Vue({
   render: h => h(App),
   router,
