@@ -1,14 +1,14 @@
 import {request} from "../request";
 
-export function login(){
+export const login= (data)=>{
   return request({
     url: '/login',
     method: 'post',
-    data:''
+    data
   })
 }
 
-export function logout(){
+export const logout = ()=>{
     return request({
         url: '/logout',
         method: 'get',

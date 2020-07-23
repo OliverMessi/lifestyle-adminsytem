@@ -5,21 +5,21 @@
     <!-- 头部区域 -->
     <HeadBar></HeadBar>
     <!-- 主内容区域 -->
-    <Main></Main>
+    <main-content/>
   </div>
 </template>
 
 <script>
   import MenuBar from './childCnps/MenuBar'
   import HeadBar from './childCnps/HeadBar'
-  import Main from './childCnps/Main'
+  import MainContent from './childCnps/MainContent'
 
   export default {
     name: "Home",
     components:{
         HeadBar,
         MenuBar,
-        Main
+        MainContent
     },
   }
 </script>
@@ -30,6 +30,6 @@
     top: 0px;
     left: 0px;
     right: 0px;
-    background: #4b5f6e;
+    /*background: #4b5f6e;*/
   }
 </style>

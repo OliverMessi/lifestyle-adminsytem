@@ -16,13 +16,9 @@ const loginData = {
 // 登录接口
 export function login () {
   return {
-    url: 'http://localhost:8002/api/login',
+    url: 'login',
     type: 'post',
-    data: {
-      'msg': 'success',
-      'code': 0,
-      'data': loginData
-    }
+    data: loginData
   }
 }
 
@@ -36,12 +32,8 @@ const logoutData = {
 
 export function logout() {
     return {
-        url: 'http://localhost:8002/api/logout',
-        type: 'post',
-        data: {
-            'msg': 'success',
-            'code': 0,
-            'data': logoutData
-        }
+        url: 'logout',
+        type: 'get',
+        data: logoutData
     }
 }

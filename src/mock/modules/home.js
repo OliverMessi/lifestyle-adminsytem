@@ -1,7 +1,7 @@
 // 获取用户信息
 export function getUser () {
   return {
-    url: 'http://localhost:8002/api/home/user',
+    url: 'home/user',
     type: 'get',
     data: {
       'msg': 'success',
@@ -19,7 +19,7 @@ export function getUser () {
 // 获取菜单信息
 export function getMenu () {
   return {
-    url: 'http://localhost:8002/api/home/menu',
+    url: 'home/menu',
     type: 'get',
     data: {
       'msg': 'success',

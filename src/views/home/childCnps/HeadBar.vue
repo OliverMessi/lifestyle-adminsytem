@@ -36,6 +36,7 @@
     import LangSelector from 'components/langSelector/LangSelector';
     import Hamburger from 'components/hamburger/Hamburger'
     import { mapState } from 'vuex'
+    import {logout} from 'network/modules/login'
     export default {
         name: "HeadBar",
         components: {
@@ -71,8 +72,11 @@
                 })
                     .then(() => {
                         sessionStorage.removeItem("user");
-                        this.$router.push
-                        ("/login");
+                        logout().then((res)=>{
+                            this.$router.push("/login")
+                        }).catch(function (res) {
+                            alert(res);
+                        })
                     })
                     .catch(() => {
                     });
@@ -117,7 +121,7 @@
             margin-left: auto;
             float: left;
             .el-menu {
-                background: #504e6180;
+                background: #0a463480;
             }
         }
         .tool-bar {

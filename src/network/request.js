@@ -6,7 +6,8 @@ export function request(options) {
   //1.创建axios实例
   const instance = axios.create({
     baseURL: config.baseURL,
-    timeout: config.timeout
+    timeout: config.timeout,
+    headers: config.headers
   });
   //2.axios的拦截器
   //2.1请求拦截的作用
@@ -20,7 +21,7 @@ export function request(options) {
         //3.某些网络请求（比如登录()）,必须携带一些特殊的信息
         let token = Cookies.get('token')
         if (token) {
-          config.headers.accessToken = token
+            config.headers.token = token
         } else {
           // 重定向到登录页面
           router.push('/login')

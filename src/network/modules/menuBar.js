@@ -2,9 +2,10 @@ import {request} from "../request";
 /*
  * 菜单管理模块
  */
-export function findMenuTree(){
+export const findNavTree = (params) => {
     return request({
-        url: '/menu/findTree',
+        url: '/menu/findNavTree',
         method: 'get',
+        params
     })
 }
