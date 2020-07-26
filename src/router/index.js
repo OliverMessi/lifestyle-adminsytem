@@ -9,6 +9,7 @@ const Home = () => import('../views/home/Home');
 const Introduce = () => import('../views/Introduce');
 const NotFound = ()=>import('../views/error/Error');
 const Login = ()=>import('../views/login/Login');
+const Register = ()=>import('../views/register/Register');
 
 //1.安装插件
 Vue.use(VueRouter)
@@ -27,6 +28,11 @@ const routes = [
     path: '/login',
     name: '登录',
     component: Login
+  },
+  {
+    path: '/register',
+    name: '注册',
+    component: Register
   }
   ,{
     path: '/404',
@@ -40,6 +46,13 @@ const router = new VueRouter({
   mode:'history'
 })
 
+// 解决Vue-Router升级导致的Uncaught(in promise) navigation guard问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
+
 router.beforeEach((to, from, next) => {
   // 登录界面登录成功之后，会把用户信息保存在会话
   // 存在时间为会话生命周期，页面关闭即失效。
@@ -51,7 +64,11 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-  } else {
+  }
+  else if(to.path == '/register'){
+    next()
+  }
+  else {
     // 如果访问非登录界面，且户会话信息不存在，代表未登录，则跳转到登录界面
     if (!userName) {
       next({ path: '/login' })

@@ -3,6 +3,9 @@
   <div class="background">
     <img :src="imgSrc" width="100%" height="100%" alt="" />
   </div>
+  <div id="register">
+    <el-button ref="register" type="primary" @click="register()">注册</el-button>
+  </div>
   <div class="loginForm">
 
     <el-form :model="loginForm" :rules="fieldRules" ref="loginForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
@@ -58,6 +61,10 @@
       };
     },
     methods: {
+      //注册
+      register(){
+          this.$router.push('/register');
+      },
       //图片验证成功
       async onSuccess() {
         //成功后的逻辑代码
@@ -103,6 +110,12 @@
 </script>
 
 <style lang="scss" scoped>
+  #register{
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: rgba(200,200,200,0.3);
+  }
   .background{
     width:100%;
     height:100%;  /**宽高100%是为了图片铺满屏幕 */
